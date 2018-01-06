@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         // Display play again button
         playAgainButton.isHidden = false
         
-        questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        questionField.text = "Looks like you know your way around!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
     }
     
