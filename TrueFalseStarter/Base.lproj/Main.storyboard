@@ -103,10 +103,12 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="falseButton" destination="AS4-HX-g9f" id="Xfj-Ws-1ey"/>
+                        <outlet property="ChoiceA" destination="J1V-MS-ECi" id="sCx-wd-rUN"/>
+                        <outlet property="ChoiceB" destination="AS4-HX-g9f" id="eNh-Mr-8rK"/>
+                        <outlet property="ChoiceC" destination="JmD-oR-oYj" id="aZ1-Mb-8FU"/>
+                        <outlet property="ChoiceD" destination="g0f-9P-3Dg" id="Tf6-72-ILV"/>
                         <outlet property="playAgainButton" destination="K17-uy-MvB" id="0Bx-Cm-ye0"/>
                         <outlet property="questionField" destination="I3V-ih-1Ky" id="7UI-o2-ATi"/>
-                        <outlet property="trueButton" destination="J1V-MS-ECi" id="iZW-hy-ROl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

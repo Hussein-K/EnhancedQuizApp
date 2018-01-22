@@ -11,24 +11,48 @@ import GameKit
 
 // Struct outlining the basic format of each Questin Object
 
-struct QuizQuestions {
+struct QuizFormat {
     var question: String
-    var Choice1: String
-    var Choice2: String
-    var Choice3: String
-    var Choice4: String
+    var answerChoices: [String]
     var answer: String
 }
 
 // Struct holding each individual question object, with their answer choices and the correct responses
 
-struct QuestionCollection {
-    let questionsAndAnswers: [QuizQuestions] = [QuizQuestions(question: "How many continents are there on planet Earth?", Choice1: "8", Choice2: "2", Choice3: "7", Choice4: "5", answer: "7"), QuizQuestions(question: "Which of the following continents has the largest land mass?", Choice1: "Asia", Choice2: "Americas", Choice3: "Europe", Choice4: "Africa", answer: "Asia"), QuizQuestions(question: "What country is known as the 'Hermit Kingdom'?", Choice1: "Montenegro", Choice2: "Vatican City", Choice3: "Madagascar", Choice4: "North Korea", answer: "North Korea"), QuizQuestions(question: "Which of the following mountains has the highest elevation above sea level?", Choice1: "K2", Choice2: "Mt. Everest", Choice3: "Makalu", Choice4: "Annapurna 1", answer: "Mt. Everest"), QuizQuestions(question: "The Appalachian Mountains are a system of mountains in Eastern _?", Choice1: "South America", Choice2: "North America", Choice3: "Australia", Choice4: "Russia", answer: "North America"), QuizQuestions(question: "Which of the following is an island nation?", Choice1: "El Salvador", Choice2: "Lebanon", Choice3: "Croatia", Choice4: "Ireland", answer: "Ireland"), QuizQuestions(question: "Russia borders countries on which two continents?", Choice1: "Antarctica & Europe", Choice2: "North America & South America", Choice3: "Australia & New Zealand", Choice4: "Europe & Asia", answer: "Europe & Asia"), QuizQuestions(question: "Which of the following is considered a 'Microstate'?", Choice1: "Vatican City", Choice2: "Barbados", Choice3: "Singapore", Choice4: "All Of The Above", answer: "All Of The Above"), QuizQuestions(question: "What was the largest contiguous land empire in history?", Choice1: "The Spanish Empire", Choice2: "The Mongol Empire", Choice3: "The Portuguese Empire", Choice4: "The British Empire", answer: "The Mongol Empire"), QuizQuestions(question: "'Montblanc' is the highest mountain in the _?", Choice1: "Alps", Choice2: "Appalachians", Choice3: "Himalayas", Choice4: "Andes", answer: "Alps")]
+struct QuizQuestions {
+    let questions: [QuizFormat] = [
+        QuizFormat(question: "How many continents are there on planet Earth?", answerChoices: ["8", "2", "7", "5"], answer: "7"),
+        QuizFormat(question: "Which of the following continents has the largest land mass?", answerChoices: ["Asia", "Americas", "Europe", "Africa"], answer: "Asia"),
+        QuizFormat(question: "What country is known as the 'Hermit Kingdom'?", answerChoices: ["Montenegro", "Vatican City", "Madagascar", "North Korea"], answer: "North Korea"),
+        QuizFormat(question: "Which of the following mountains has the highest elevation above sea level?", answerChoices: ["K2", "Mt. Everest", "Makalu", "Annapurna 1"], answer: "Mt. Everest"),
+        QuizFormat(question: "The Appalachian Mountains are a system of mountains in Eastern _?", answerChoices: ["South America", "North America", "Australia", "Russia"], answer: "North America"),
+        QuizFormat(question: "Which of the following is an island nation?", answerChoices: ["El Salvador", "Lebanon", "Croatia", "Ireland"], answer: "Ireland"),
+        QuizFormat(question: "Russia borders countries on which two continents?", answerChoices: ["Antarctica & Europe", "North America & South America", "Australia & New Zealand", "Europe & Asia"], answer: "Europe & Asia"),
+        QuizFormat(question: "Which of the following is considered a 'Microstate'?", answerChoices: ["Vatican City", "Barbados", "Singapore", "All Of The Above"], answer: "All Of The Above"),
+        QuizFormat(question: "What was the largest contiguous land empire in history?", answerChoices: ["The Spanish Empire", "The Mongol Empire", "The Portuguese Empire", "The British Empire"], answer: "The Mongol Empire"),
+        QuizFormat(question: "'Montblanc' is the highest mountain in the _?", answerChoices: ["Alps", "Appalachians", "Himalayas", "Andes"], answer: "Alps")]
     
-// Method for randomizing the questions in-game
+    // Random selection of an instance from the array of questions
+    func randomIndexOfSelectedQuestion() -> Int {
+        let indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questions.count)
+        return indexOfSelectedQuestion
+    }
     
-    func randomQuestion() -> [QuizQuestions] {
-        let randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: questionsAndAnswers.count)
-        return [questionsAndAnswers[randomNumber]]
+    // Function that pulls the 'Question' value
+    func randomQuestion(indexOfSelectedQuestion: Int) -> String {
+        let questionCollection = questions[indexOfSelectedQuestion]
+        return questionCollection.question
+    }
+    
+    // Randomizes the answers on each of the provided buttons
+    func randomAnswer(indexOfSelectedQuestion: Int) -> [String] {
+        let questionCollection = questions[indexOfSelectedQuestion]
+        return questionCollection.answerChoices
+    }
+    
+    // Function to return the correct answer to the Check Answer action
+    func correctAnswerToQuestion(indexOfSelectedQuestion: Int) -> String {
+        let questionCollection = questions[indexOfSelectedQuestion]
+        return questionCollection.answer
     }
 }
