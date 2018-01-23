@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     
     var quizQuestions = QuizQuestions()
     
-    var answeredQuestionIndexesCollection: [Int] = Array()
     var correctAnswer = ""
     
     
@@ -49,6 +48,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Function used to call a question from the QuizQuestions object
     func displayQuestion() {
         indexOfSelectedQuestion = quizQuestions.randomIndexOfSelectedQuestion()
         let question = quizQuestions.randomQuestion(indexOfSelectedQuestion: indexOfSelectedQuestion)
@@ -56,9 +56,11 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = true
     }
     
+    // Function used to display the answer choices for each question
     func displayAnswer() {
         let answerArray = quizQuestions.randomAnswer(indexOfSelectedQuestion: indexOfSelectedQuestion)
         
+        // Shows the answer choices
         ChoiceA.isHidden = false
         ChoiceB.isHidden = false
         ChoiceC.isHidden = false
@@ -72,6 +74,8 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    // Function used to show the user's final score along with a message
     func displayScore() {
         // Hide the answer buttons
         ChoiceA.isHidden = true
@@ -86,6 +90,7 @@ class ViewController: UIViewController {
         
     }
     
+    // Action that checks the user's input with the correct answer according to the QuizQuestions object
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
@@ -99,15 +104,18 @@ class ViewController: UIViewController {
             questionField.text = "Sorry, wrong answer!"
         }
         
+        removeQuestionFromGame()
         loadNextRoundWithDelay(seconds: 2)
     }
     
+    // Function that allows the user to play another round
     func nextRound() {
         if questionsAsked == questionsPerRound {
+            
             // Game is over
             displayScore()
         } else {
-            // Continue game
+            
             displayQuestion()
             displayAnswer()
         }
@@ -120,12 +128,24 @@ class ViewController: UIViewController {
         ChoiceC.isHidden = true
         ChoiceD.isHidden = true
         
+        resetQuestionsInGame()
         questionsAsked = 0
         correctQuestions = 0
+        
         nextRound()
     }
     
-
+    // Function which ensures that no questions repeat during the round
+    func removeQuestionFromGame() {
+        answeredQuestionIndexesCollection.append(quizQuestions.questions[indexOfSelectedQuestion])
+        quizQuestions.questions.remove(at: indexOfSelectedQuestion)
+    }
+    
+    // Function that resets the list of possible questions for each round
+    func resetQuestionsInGame() {
+        quizQuestions.questions.append(contentsOf: answeredQuestionIndexesCollection)
+        answeredQuestionIndexesCollection.removeAll()
+    }
     
     // MARK: Helper Methods
     

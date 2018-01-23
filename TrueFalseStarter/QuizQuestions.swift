@@ -20,7 +20,7 @@ struct QuizFormat {
 // Struct holding each individual question object, with their answer choices and the correct responses
 
 struct QuizQuestions {
-    let questions: [QuizFormat] = [
+    var questions: [QuizFormat] = [
         QuizFormat(question: "How many continents are there on planet Earth?", answerChoices: ["8", "2", "7", "5"], answer: "7"),
         QuizFormat(question: "Which of the following continents has the largest land mass?", answerChoices: ["Asia", "Americas", "Europe", "Africa"], answer: "Asia"),
         QuizFormat(question: "What country is known as the 'Hermit Kingdom'?", answerChoices: ["Montenegro", "Vatican City", "Madagascar", "North Korea"], answer: "North Korea"),
@@ -56,3 +56,7 @@ struct QuizQuestions {
         return questionCollection.answer
     }
 }
+
+// Collection that will temporarily hold the used questions so that they aren't repeated during the same round
+var answeredQuestionIndexesCollection = [QuizFormat]()
+
