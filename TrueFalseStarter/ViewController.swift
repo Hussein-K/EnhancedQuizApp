@@ -63,7 +63,6 @@ class ViewController: UIViewController {
     func displayAnswer() {
         let answerArray = quizQuestions.randomAnswer(indexOfSelectedQuestion: indexOfSelectedQuestion)
 
-        
         if answerArray.count == 4 {
             ChoiceA.setTitle(answerArray[0], for: .normal)
             ChoiceB.setTitle(answerArray[1], for: .normal)
@@ -83,7 +82,6 @@ class ViewController: UIViewController {
         
         // Statement to change the endgame text depending on the user's score
         if correctQuestions == 4 {
-            
             questionField.text = "Looks like you know your way around! You got \(correctQuestions) out of \(questionsPerRound) correct!"
         } else {
             questionField.text = "Looks like we've still got things to learn! You got \(correctQuestions) out of \(questionsPerRound) correct!"
