@@ -25,12 +25,12 @@ struct QuizQuestions {
         QuizFormat(question: "Which of the following continents has the largest land mass?", answerChoices: ["Asia", "Americas", "Europe", "Africa"], answer: "Asia"),
         QuizFormat(question: "What country is known as the 'Hermit Kingdom'?", answerChoices: ["Montenegro", "Vatican City", "Madagascar", "North Korea"], answer: "North Korea"),
         QuizFormat(question: "Which of the following mountains has the highest elevation above sea level?", answerChoices: ["K2", "Mt. Everest", "Makalu", "Annapurna 1"], answer: "Mt. Everest"),
-        QuizFormat(question: "The Appalachian Mountains are a system of mountains in Eastern _?", answerChoices: ["South America", "North America", "Australia", "Russia"], answer: "North America"),
+        QuizFormat(question: "The Appalachian Mountains are a system of mountains in Eastern ___?", answerChoices: ["South America", "North America", "Australia", "Russia"], answer: "North America"),
         QuizFormat(question: "Which of the following is an island nation?", answerChoices: ["El Salvador", "Lebanon", "Croatia", "Ireland"], answer: "Ireland"),
         QuizFormat(question: "Russia borders countries on which two continents?", answerChoices: ["Antarctica & Europe", "North America & South America", "Australia & New Zealand", "Europe & Asia"], answer: "Europe & Asia"),
         QuizFormat(question: "Which of the following is considered a 'Microstate'?", answerChoices: ["Vatican City", "Barbados", "Singapore", "All Of The Above"], answer: "All Of The Above"),
         QuizFormat(question: "What was the largest contiguous land empire in history?", answerChoices: ["The Spanish Empire", "The Mongol Empire", "The Portuguese Empire", "The British Empire"], answer: "The Mongol Empire"),
-        QuizFormat(question: "'Montblanc' is the highest mountain in the _?", answerChoices: ["Alps", "Appalachians", "Himalayas", "Andes"], answer: "Alps")]
+        QuizFormat(question: "'Montblanc' is the highest mountain in the ___?", answerChoices: ["Alps", "Appalachians", "Himalayas", "Andes"], answer: "Alps")]
     
     // Random selection of an instance from the array of questions
     func randomIndexOfSelectedQuestion() -> Int {

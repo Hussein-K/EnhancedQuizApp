@@ -36,6 +36,7 @@
                                 <state key="normal" title="Choice A"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pHS-se-fli"/>
+                                    <action selector="disableAnswerChoices:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BJA-Yu-GvU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS4-HX-g9f" userLabel="Choice B">
@@ -46,6 +47,7 @@
                                 <state key="normal" title="Choice B"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qfk-Z2-crr"/>
+                                    <action selector="disableAnswerChoices:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gcf-5Q-R5J"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmD-oR-oYj" userLabel="Choice C">
@@ -56,6 +58,7 @@
                                 <state key="normal" title="Choice C"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bwD-eg-FTK"/>
+                                    <action selector="disableAnswerChoices:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yJ6-Gd-IEo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0f-9P-3Dg">
@@ -66,6 +69,7 @@
                                 <state key="normal" title="Choice D"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KtC-H0-XbR"/>
+                                    <action selector="disableAnswerChoices:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahC-5c-9Vr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K17-uy-MvB">

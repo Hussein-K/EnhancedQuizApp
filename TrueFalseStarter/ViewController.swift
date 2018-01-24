@@ -53,18 +53,16 @@ class ViewController: UIViewController {
         indexOfSelectedQuestion = quizQuestions.randomIndexOfSelectedQuestion()
         let question = quizQuestions.randomQuestion(indexOfSelectedQuestion: indexOfSelectedQuestion)
         questionField.text = question
+        enableAnswers()
+        displayAnswerChoices()
         playAgainButton.isHidden = true
+        
     }
     
     // Function used to display the answer choices for each question
     func displayAnswer() {
         let answerArray = quizQuestions.randomAnswer(indexOfSelectedQuestion: indexOfSelectedQuestion)
-        
-        // Shows the answer choices
-        ChoiceA.isHidden = false
-        ChoiceB.isHidden = false
-        ChoiceC.isHidden = false
-        ChoiceD.isHidden = false
+
         
         if answerArray.count == 4 {
             ChoiceA.setTitle(answerArray[0], for: .normal)
@@ -83,11 +81,16 @@ class ViewController: UIViewController {
         ChoiceC.isHidden = true
         ChoiceD.isHidden = true
         
+        // Statement to change the endgame text depending on the user's score
+        if correctQuestions == 4 {
+            
+            questionField.text = "Looks like you know your way around! You got \(correctQuestions) out of \(questionsPerRound) correct!"
+        } else {
+            questionField.text = "Looks like we've still got things to learn! You got \(correctQuestions) out of \(questionsPerRound) correct!"
+        }
+        
         // Display play again button
         playAgainButton.isHidden = false
-        
-        questionField.text = "Looks like you know your way around!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
-        
     }
     
     // Action that checks the user's input with the correct answer according to the QuizQuestions object
@@ -104,6 +107,7 @@ class ViewController: UIViewController {
             questionField.text = "Sorry, wrong answer!"
         }
         
+        disableAnswerChoices(sender)
         removeQuestionFromGame()
         loadNextRoundWithDelay(seconds: 2)
     }
@@ -146,6 +150,48 @@ class ViewController: UIViewController {
         quizQuestions.questions.append(contentsOf: answeredQuestionIndexesCollection)
         answeredQuestionIndexesCollection.removeAll()
     }
+
+    // Action that disables the buttons and dims them until the next question is asked
+    @IBAction func disableAnswerChoices(_ sender: UIButton) {
+        let answerButtons = [ChoiceA, ChoiceB, ChoiceC, ChoiceD]
+        
+        // Lowers the opacity of each button until the next question is asked
+        for button in answerButtons {
+            button?.isEnabled = false
+            button?.alpha = 0.2
+        }
+        
+        // Keeps the correct answer clear
+        for selectedButton in answerButtons {
+            if sender == selectedButton {
+                selectedButton?.alpha = 1.0
+            }
+        }
+    }
+    
+    // Function that is used to reset the opacity of each button and make sure they are usable
+    func enableAnswers() {
+        // Enables the buttons
+        ChoiceA.isEnabled = true
+        ChoiceB.isEnabled = true
+        ChoiceC.isEnabled = true
+        ChoiceD.isEnabled = true
+        
+        // Keeps the buttons fully visible
+        ChoiceA.alpha = 1.0
+        ChoiceB.alpha = 1.0
+        ChoiceC.alpha = 1.0
+        ChoiceD.alpha = 1.0
+    }
+    
+    func displayAnswerChoices() {
+        // Shows the answer choices
+        ChoiceA.isHidden = false
+        ChoiceB.isHidden = false
+        ChoiceC.isHidden = false
+        ChoiceD.isHidden = false
+    }
+    
     
     // MARK: Helper Methods
     
